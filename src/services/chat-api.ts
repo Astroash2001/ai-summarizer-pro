@@ -18,35 +18,38 @@ const API_BASE_URL = "https://ai-summarizer-pro-omy1.onrender.com/api";
 
 export async function extractText(file: File): Promise<ExtractTextResponse> {
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append("file", file);
 
   const response = await fetch(`${API_BASE_URL}/extract-text/`, {
-    method: 'POST',
+    method: "POST",
     body: formData,
   });
 
   const data = await response.json();
-  
+
   if (!response.ok) {
-    throw new Error(data.error || 'Failed to extract text from document');
+    throw new Error(data.error || "Failed to extract text from document");
   }
 
   return data;
 }
 
-export async function chatWithDocument(question: string, context: string): Promise<ChatResponse> {
+export async function chatWithDocument(
+  question: string,
+  context: string,
+): Promise<ChatResponse> {
   const response = await fetch(`${API_BASE_URL}/chat-document/`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({ question, context }),
   });
 
   const data = await response.json();
-  
+
   if (!response.ok) {
-    throw new Error(data.error || 'Failed to get response');
+    throw new Error(data.error || "Failed to get response");
   }
 
   return data;
