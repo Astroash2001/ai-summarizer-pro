@@ -1,14 +1,8 @@
 import { useState, useRef, ChangeEvent } from "react";
-import {
-  MessageSquare,
-  Upload,
-  Send,
-  Loader2,
-  FileText,
-  X,
-} from "lucide-react";
+import { MessageSquare, Upload, Send, Loader2, FileText, X } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { extractText, chatWithDocument } from "@/services/chat-api";
 
 interface Message {
   role: "user" | "assistant";
@@ -52,35 +46,19 @@ const ChatWithDocument = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-
     try {
       // Call backend to extract text (you can create a separate endpoint or reuse summarize)
-      const response = await fetch(
-        "https://ai-summarizer-pro-omy1.onrender.com/api/extract-text/",
+      const data = await extractText(selectedFile);
+      setFile(selectedFile);
+      setExtractedText(data.text);
+      setMessages([
         {
-          method: "POST",
-          body: formData,
+          role: "assistant",
+          content: `I've read your document "${selectedFile.name}". You can now ask me questions about it!`,
         },
-      );
-
-      const data = await response.json();
-
-      if (response.ok && data.status === "success") {
-        setFile(selectedFile);
-        setExtractedText(data.text);
-        setMessages([
-          {
-            role: "assistant",
-            content: `I've read your document "${selectedFile.name}". You can now ask me questions about it!`,
-          },
-        ]);
-      } else {
-        setError(data.error || "Failed to process document");
-      }
+      ]);
     } catch (err) {
-      setError("Failed to upload document. Make sure the backend is running.");
+      setError(err instanceof Error ? err.message : "Failed to process document");
     } finally {
       setIsUploading(false);
     }
