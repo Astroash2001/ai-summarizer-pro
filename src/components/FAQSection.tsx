@@ -8,20 +8,20 @@ import {
 
 const faqs = [
   {
-    question: "What is the best AI for summarizing?",
-    answer: "Our AI Summarizer uses advanced natural language processing to provide accurate and concise summaries. It's designed to handle various document types and delivers high-quality results quickly."
+    question: "How does this AI summarizer work?",
+    answer: "Our AI analyzes your document using advanced language processing to identify the most important ideas and key points. It then condenses the content into a clear, easy-to-read summary — helping you understand information faster without losing essential context."
   },
   {
     question: "Can AI summarize a PowerPoint?",
     answer: "Yes, our AI can process PowerPoint presentations and extract key points from slides, providing you with a comprehensive summary of the content."
   },
   {
-    question: "What is the best AI PDF summarizer?",
-    answer: "Our PDF summarizer is one of the most advanced tools available, capable of extracting and condensing information from PDF documents while maintaining context and accuracy."
+    question: "How can AI save time when summarizing PDFs?",
+    answer: "AI saves time by instantly scanning your PDF and extracting the most important points, so you don't have to read every page manually. Instead of spending minutes or hours reviewing long documents, the AI delivers a concise summary in seconds — helping you understand key information faster and focus on what matters most."
   },
   {
-    question: "Is Gemini AI FREE summarizer online?",
-    answer: "Our AI Summarizer offers free online access with powerful summarization capabilities. You can summarize documents, text, and more without any signup required."
+    question: "How accurate are AI summaries?",
+    answer: "AI summaries are designed to capture the key points and main ideas from your content with high accuracy. While the AI aims to preserve meaning and context, the quality of the summary depends on the clarity and structure of the original text. For most documents, summaries are reliable and consistent — but we always recommend a quick review for critical or sensitive information."
   }
 ];
 

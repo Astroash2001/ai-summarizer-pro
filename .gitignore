@@ -12,6 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# API Key backup (keep local only)
+API_KEY_BACKUP.md
+
+# Backend static files (generated in production)
+backend/staticfiles/
+backend/media/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

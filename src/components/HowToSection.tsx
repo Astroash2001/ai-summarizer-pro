@@ -1,47 +1,63 @@
-import { Upload, Settings, FileCheck } from "lucide-react";
+import { FileText, FileEdit, Download } from "lucide-react";
 
 const steps = [
   {
-    icon: <Upload className="w-10 h-10 text-icon-blue" />,
-    title: "Upload PDF, TXT/DOC, DOCX online or enter URL to summarize",
-    description: "To begin, simply upload your PDF, TXT, DOC, or DOCX file to our online platform. Alternatively, you can enter the URL of the document you wish to summarize. Our user-friendly interface ensures a seamless experience, allowing you to quickly access the AI summarization capabilities."
+    number: 1,
+    badgeColor: "bg-blue-500",
+    icon: <FileText className="w-12 h-12 text-blue-400" strokeWidth={1.5} />,
+    title: "Upload PDF, Audio, Video to the AI PDF Summarizer",
+    description: "Import your PDF file to the AI PDF Summarizer page by selecting or dragging it."
   },
   {
-    icon: <Settings className="w-10 h-10 text-icon-blue" />,
-    title: "Set Summarize Parameters PDF or Text",
-    description: "Once your file is uploaded or URL is entered, you can customize the summarization parameters. Specify whether you want a summary of a PDF or text document. Adjust settings such as summary length, key points extraction, or specific sections to focus on. Tailor the summarization process to meet your specific needs."
+    number: 2,
+    badgeColor: "bg-green-500",
+    icon: <FileEdit className="w-12 h-12 text-blue-400" strokeWidth={1.5} />,
+    title: "Choose to Summarize PDF or Text",
+    description: "Once your PDF is uploaded, select the Summarize function. You will have the option to summarize the entire PDF or specific content. Choose \"The entire PDF\" to generate a summary from your PDF directly, or select \"Specified content\" to summarize any texts."
   },
   {
-    icon: <FileCheck className="w-10 h-10 text-icon-blue" />,
-    title: "Get summarized content or key points from uploaded file",
-    description: "After setting your preferences, click the 'Summarize' button and let our AI do the work. Within moments, you'll receive a concise summary highlighting the key points and essential information from your document. Review the summary and utilize it for quick reference or further analysis."
+    number: 3,
+    badgeColor: "bg-cyan-400",
+    icon: <Download className="w-12 h-12 text-blue-400" strokeWidth={1.5} />,
+    title: "Upload PDF, Audio, Video to the AI PDF Summarizer",
+    description: "Import your PDF file to the AI PDF Summarizer page by selecting or dragging it."
   }
 ];
 
 const HowToSection = () => {
   return (
-    <section id="how-to" className="section-padding bg-background">
+    <section id="how-to" className="section-padding bg-[#0a1628]">
       <div className="container-custom">
-        <h2 className="heading-2 text-center mb-12">How to AI Summarizer Online for Free</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-16">
+          How to AI Summarize Online for Free
+        </h2>
         
-        <div className="space-y-6 max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {steps.map((step, index) => (
-            <div key={index} className="card-feature flex flex-col sm:flex-row gap-6">
-              <div className="flex-shrink-0 flex items-start justify-center">
-                <div className="p-4 bg-secondary rounded-xl">
+            <div key={index} className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 mb-12 items-start">
+              {/* Left side - Icon and Number */}
+              <div className="flex items-center gap-6 justify-center md:justify-end">
+                <div className="flex-shrink-0">
                   {step.icon}
                 </div>
+                <div className={`w-12 h-12 ${step.badgeColor} rounded-full flex items-center justify-center text-white text-xl font-bold`}>
+                  {step.number}
+                </div>
               </div>
-              <div>
-                <h3 className="heading-3 mb-3">{step.title}</h3>
-                <p className="text-body text-sm">{step.description}</p>
+              
+              {/* Right side - Content */}
+              <div className="bg-[#0d1f36] rounded-lg p-8">
+                <h3 className="text-xl font-semibold text-white mb-4">{step.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <button className="btn-primary">Try Now for Free</button>
+          <button className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white px-12 py-3 rounded-full text-base font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
+            AI Summarizer free now
+          </button>
         </div>
       </div>
     </section>
