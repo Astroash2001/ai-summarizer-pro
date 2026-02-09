@@ -1,5 +1,12 @@
 import { useState, useRef, ChangeEvent } from "react";
-import { MessageSquare, Upload, Send, Loader2, FileText, X } from "lucide-react";
+import {
+  MessageSquare,
+  Upload,
+  Send,
+  Loader2,
+  FileText,
+  X,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { extractText, chatWithDocument } from "@/services/chat-api";
@@ -58,7 +65,9 @@ const ChatWithDocument = () => {
         },
       ]);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to process document");
+      setError(
+        err instanceof Error ? err.message : "Failed to process document",
+      );
     } finally {
       setIsUploading(false);
     }
@@ -93,7 +102,7 @@ const ChatWithDocument = () => {
 
     try {
       // Send question with document context to backend
-      const response = await fetch("http://localhost:8000/api/chat-document/", {
+      const response = await fetch(`${API_BASE}/chat-document/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
